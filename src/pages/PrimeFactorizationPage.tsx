@@ -4,13 +4,13 @@ import { primeFactorization } from '../utils/primeFactorization';
 const PrimeFactorizationPage: React.FC = () => {
     const [number, setNumber] = useState<number | ''>('');
     const [result, setResult] = useState<{ steps: string[]; factors: { [key: number]: number } } | null>(null);
-    const [showSteps, setShowSteps] = useState(false); // State to toggle steps visibility
+    const [showSteps, setShowSteps] = useState(false);
 
     const handleCalculate = () => {
         if (number && number > 0) {
             const res = primeFactorization(Number(number));
             setResult(res);
-            setShowSteps(false); // Reset to hide steps on a new calculation
+            setShowSteps(false);
         } else {
             alert('Please enter a valid positive number.');
         }
@@ -36,7 +36,7 @@ const PrimeFactorizationPage: React.FC = () => {
                     Enter a number to find its prime factorization.
                 </p>
 
-                {/* Input Section */}
+                {}
                 <input
                     type="number"
                     value={number}
@@ -76,7 +76,7 @@ const PrimeFactorizationPage: React.FC = () => {
                     Calculate
                 </button>
 
-                {/* Results Section */}
+                {}
                 {result && (
                     <div style={{ textAlign: 'left' }}>
                         <h2 style={{ color: '#e2e8f0', fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '10px' }}>

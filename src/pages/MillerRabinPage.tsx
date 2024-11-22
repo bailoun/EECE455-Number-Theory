@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { millerRabin } from '../utils/millerRabin';
 
 const MillerRabinPage: React.FC = () => {
-    const [number, setNumber] = useState<string>(''); // Input number as a string
-    const [result, setResult] = useState<{ steps: string[]; isPrime: boolean; input: string } | null>(null); // Result and input
-    const [showSteps, setShowSteps] = useState(false); // Step visibility toggle
+    const [number, setNumber] = useState<string>('');
+    const [result, setResult] = useState<{ steps: string[]; isPrime: boolean; input: string } | null>(null);
+    const [showSteps, setShowSteps] = useState(false);
 
     const handleCalculate = () => {
         if (number && BigInt(number) > 0n) {
-            const res = millerRabin(number); // Pass the number as a string
-            setResult({ ...res, input: number }); // Store the calculated result and input value
-            setShowSteps(false); // Reset step visibility on new calculation
+            const res = millerRabin(number);
+            setResult({ ...res, input: number });
+            setShowSteps(false);
         } else {
             alert('Please enter a valid positive number.');
         }
@@ -40,7 +40,7 @@ const MillerRabinPage: React.FC = () => {
                 <input
                     type="text"
                     value={number}
-                    onChange={(e) => setNumber(e.target.value)} // Accept input as string
+                    onChange={(e) => setNumber(e.target.value)}
                     placeholder="Enter a number"
                     style={{
                         width: '95%',
@@ -80,8 +80,8 @@ const MillerRabinPage: React.FC = () => {
                 {result && (
                     <div style={{ textAlign: 'left' }}>
                         <div style={{
-                            display: 'flex', // Use flexbox to align items on the same line
-                            alignItems: 'center', // Vertically align items
+                            display: 'flex',
+                            alignItems: 'center',
                             gap: '10px',
                             marginBottom: '30px'
                         }}>
@@ -89,7 +89,7 @@ const MillerRabinPage: React.FC = () => {
                                 color: '#e2e8f0',
                                 fontSize: '1.5rem',
                                 fontWeight: 'bold',
-                                margin: 0 // Remove margin to align properly
+                                margin: 0
                             }}>
                                 Result:
                             </h2>
@@ -101,8 +101,8 @@ const MillerRabinPage: React.FC = () => {
                                 fontWeight: 'bold',
                                 fontSize: '1.2rem',
                                 boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
-                                display: 'inline-block', // Make it fit the content
-                                margin: 0 // Remove margin to align properly
+                                display: 'inline-block',
+                                margin: 0
                             }}>
                                 <strong>{result.input} is {result.isPrime ? 'Prime' : 'Not Prime'}</strong>
                             </p>

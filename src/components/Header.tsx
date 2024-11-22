@@ -20,7 +20,7 @@ const Header: React.FC = () => {
                     fontSize: '1.5rem',
                     cursor: 'pointer',
                 }}
-                onClick={() => navigate('/')} // Navigates to Home when clicked
+                onClick={() => navigate('/')}
             >
                 Number Theory Calculator
             </h1>

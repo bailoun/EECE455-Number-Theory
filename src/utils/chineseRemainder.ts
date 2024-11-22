@@ -7,7 +7,7 @@ export function chineseRemainder(
     }
   
     let steps: string[] = [];
-    let stepNumber = 1; // Step numbering
+    let stepNumber = 1;
   
     let x = BigInt(remainders[0]);
     let m = BigInt(moduli[0]);
@@ -18,7 +18,6 @@ export function chineseRemainder(
       const m_i = BigInt(moduli[i]);
       steps.push(`${stepNumber++}. x ≡ ${remainders[i]} mod ${moduli[i]}`);
   
-      // Compute extended GCD of m and m_i
       const { gcd, x: s, y: t } = extendedGCD(m, m_i);
       steps.push(
         `${stepNumber++}. gcd(${m}, ${m_i}): gcd = ${gcd}, s = ${s}, t = ${t}`
@@ -27,22 +26,18 @@ export function chineseRemainder(
       const diff = a_i - x;
       steps.push(`${stepNumber++}. ${remainders[i]} - ${x} = ${diff}`);
   
-      // Check if solution exists
       if (diff % gcd !== 0n) {
         throw new Error('No solution exists for the given congruences.');
       }
   
-      // Calculate Least Common Multiple (LCM)
       const lcm = (m / gcd) * m_i;
       steps.push(`${stepNumber++}. LCM(${m}, ${m_i}): ${lcm}`);
   
-      // Calculate the multiplier
       const multiplier = ((diff / gcd) * s) % (m_i / gcd);
       steps.push(
         `${stepNumber++}. Multiplier = ((${diff} / ${gcd}) * ${s}) mod (${m_i} / ${gcd}) = ${multiplier}`
       );
   
-      // Update the solution x
       x = x + multiplier * m;
       x = ((x % lcm) + lcm) % lcm;
       steps.push(`${stepNumber++}. x = ${x} mod ${lcm}`);

@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
             <div style={{ textAlign: 'center', marginBottom: '9%' }}>
             </div>
 
-            {/* Rectangular Areas */}
+            {}
             <div
                 style={{
                     display: 'flex',
@@ -20,7 +20,7 @@ const HomePage: React.FC = () => {
                     margin: '0 auto',
                 }}
             >
-                {/* Shared Style */}
+                {}
                 {[
                     { label: 'Prime Factorization', route: '/prime-factorization' },
                     { label: 'Totient Function', route: '/totient-function' },

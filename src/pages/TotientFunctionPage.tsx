@@ -3,14 +3,14 @@ import { totientFunction } from '../utils/totientFunction';
 
 const TotientFunctionPage: React.FC = () => {
     const [number, setNumber] = useState<number | ''>(''); // Input number
-    const [result, setResult] = useState<{ steps: string[]; value: number; input: number } | null>(null); // Result and its associated input
+    const [result, setResult] = useState<{ steps: string[]; value: number; input: number } | null>(null);
     const [showSteps, setShowSteps] = useState(false); // Step visibility toggle
 
     const handleCalculate = () => {
         if (number && number > 0) {
             const res = totientFunction(Number(number));
-            setResult({ ...res, input: Number(number) }); // Store the calculated result and input value
-            setShowSteps(false); // Reset step visibility on new calculation
+            setResult({ ...res, input: Number(number) });
+            setShowSteps(false);
         } else {
             alert('Please enter a valid positive number.');
         }

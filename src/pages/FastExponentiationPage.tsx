@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { fastExponentiation } from '../utils/fastExponentiation';
 
 const FastExponentiationPage: React.FC = () => {
-    const [base, setBase] = useState<number | ''>(''); // Input base
-    const [exponent, setExponent] = useState<number | ''>(''); // Input exponent
-    const [modulus, setModulus] = useState<number | ''>(''); // Input modulus
-    const [result, setResult] = useState<{ steps: string[]; result: number } | null>(null); // Result and steps
-    const [error, setError] = useState<string | null>(null); // Error message
-    const [showSteps, setShowSteps] = useState(false); // Toggle steps visibility
+    const [base, setBase] = useState<number | ''>('');
+    const [exponent, setExponent] = useState<number | ''>('');
+    const [modulus, setModulus] = useState<number | ''>('');
+    const [result, setResult] = useState<{ steps: string[]; result: number } | null>(null);
+    const [error, setError] = useState<string | null>(null);
+    const [showSteps, setShowSteps] = useState(false);
 
     const handleCalculate = () => {
         try {
             if (base !== '' && exponent !== '' && modulus !== '' && modulus > 0) {
                 const res = fastExponentiation(Number(base), Number(exponent), Number(modulus));
                 setResult(res);
-                setShowSteps(false); // Reset steps visibility
-                setError(null); // Clear any previous errors
+                setShowSteps(false);
+                setError(null);
             } else {
                 alert('Please enter valid positive integers for base, exponent, and modulus.');
             }
@@ -45,7 +45,7 @@ const FastExponentiationPage: React.FC = () => {
                     Compute `(base^exponent) % modulus` efficiently.
                 </p>
 
-                {/* Input Section */}
+                {}
                 <input
                     type="number"
                     value={base}
@@ -119,12 +119,12 @@ const FastExponentiationPage: React.FC = () => {
                     Calculate
                 </button>
 
-                {/* Result Section */}
+                {}
                 {result && (
                     <div style={{ textAlign: 'left', marginTop: '20px' }}>
                         <div style={{
-                            display: 'flex', // Use flexbox to align items on the same line
-                            alignItems: 'center', // Vertically align items
+                            display: 'flex',
+                            alignItems: 'center',
                             gap: '10px',
                             marginBottom: '30px'
                         }}>
@@ -132,7 +132,7 @@ const FastExponentiationPage: React.FC = () => {
                                 color: '#e2e8f0',
                                 fontSize: '1.5rem',
                                 fontWeight: 'bold',
-                                margin: 0 // Remove margin to align properly
+                                margin: 0
                             }}>
                                 Result:
                             </h2>
@@ -144,8 +144,8 @@ const FastExponentiationPage: React.FC = () => {
                                 fontWeight: 'bold',
                                 fontSize: '1.2rem',
                                 boxShadow: '0 2px 6px rgba(0, 0, 0, 0.2)',
-                                display: 'inline-block', // Make it fit the content
-                                margin: 0 // Remove margin to align properly
+                                display: 'inline-block',
+                                margin: 0
                             }}>
                                 <strong>{result.result}</strong>
                             </p>
@@ -173,7 +173,7 @@ const FastExponentiationPage: React.FC = () => {
                             {showSteps ? 'Hide Steps' : 'Show Steps'}
                         </button>
 
-                        {/* Steps Section */}
+                        {}
                         {showSteps && (
                             <div
                                 style={{
@@ -207,7 +207,7 @@ const FastExponentiationPage: React.FC = () => {
                     </div>
                 )}
 
-                {/* Error Section */}
+                {}
                 {error && (
                     <div style={{ color: '#f56565', fontSize: '1.2rem', marginTop: '20px' }}>
                         Error: {error}
